@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { UserService } from './users.service';
+import { Serialize } from 'src/interceptors/serialize.interceptors';
+import { UserDto } from 'src/dto/user.dto';
 
+@Serialize(UserDto)
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
