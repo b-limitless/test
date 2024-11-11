@@ -6,9 +6,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_PIPE } from '@nestjs/core';
 
-import cookieSession from 'cookie-session';
+const cookieSession = require('cookie-session');
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 
 @Module({
   imports: [
