@@ -22,13 +22,13 @@ export class UserController {
       body.password,
       body.name,
     );
-    session.userId = user.id;
+    session.userId = user._id;
   }
 
   @Post('/signin')
   async signin(@Body() body: CreateUserDto, @Session() session: any) {
     const user = await this.authService.signin(body.email, body.password);
-    session.userId = user.id;
+    session.userId = user._id;
   }
 
   @Post('/signout')
@@ -37,7 +37,8 @@ export class UserController {
   }
 
   @Post('/currentUser')
-  currentUser(@CurrentUser() user: User) {
+  currentUser(@CurrentUser() user: User, @Session() session: any) {
+    console.log('user', session?.userId)
     return user;
   }
 

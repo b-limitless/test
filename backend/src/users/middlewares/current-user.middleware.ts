@@ -21,8 +21,9 @@ declare global {
 export class CurrentUserMiddleware implements NestMiddleware {
   constructor(private userService: UserService) {}
   async use(req: Request, res: Response, next: NextFunction) {
+    console.log('userId', 'userId')
     const { userId } = req?.session || {};
-
+    
     if (!Types.ObjectId.isValid(userId)) {
       throw new BadRequestException('Invalid ID format');
     }
