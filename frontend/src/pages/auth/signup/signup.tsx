@@ -3,31 +3,32 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userSchema } from './user-schema';
 import DynamicForm from '../../../common/DynamicForm';
+import './signup.scss';
 
 export default function Create() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<any>({
-    email: '', 
-    name: '', 
+    email: '',
+    name: '',
     password: ''
   });
   const [errors, setErrors] = useState<any>({
-    email: '', 
-    name: '', 
+    email: '',
+    name: '',
     password: ''
   });
-  
 
-  const handleChange = (e:any) => {
+
+  const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prev:any) => ({
+    setFormData((prev: any) => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     try {
       // Submit the form to service
     } catch (err) {
@@ -36,8 +37,8 @@ export default function Create() {
   };
 
   const validateForm = () => {
-    const newErrors:any = {};
-    userSchema.forEach((field:any) => {
+    const newErrors: any = {};
+    userSchema.forEach((field: any) => {
       const value = formData[field.field];
 
       // Check if regex exists and validate value with regex
@@ -73,25 +74,34 @@ export default function Create() {
     // }
   }, []);
 
+  console.log('formData', formData)
+
   return (
     <>
-      {/* {error?.data?.message && (
+      <div className="form_container">
+        {/* {error?.data?.message && (
         <FormHelperText sx={{ color: 'red', p: 1 }}>
           {error?.data?.message.toString()}
         </FormHelperText>
       )} */}
 
-      <Box component="form" sx={{ p: 2 }}>
-      <DynamicForm
-          formSchema={userSchema}
-          setFormData={setFormData}
-          formData={formData}
-          handleSubmit={onSubmit}
-          validateForm={validateForm}
-          errors={errors}
-          saving={false}
-        />
-      </Box>
+        <div className="form">
+          <DynamicForm
+            formSchema={userSchema}
+            setFormData={setFormData}
+            formData={formData}
+            handleSubmit={onSubmit}
+            validateForm={validateForm}
+            errors={errors}
+            saving={false}
+          />
+        </div>
+
+
+
+
+      </div>
+
     </>
   );
 }

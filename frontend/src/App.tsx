@@ -2,6 +2,7 @@
 import React, { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
+import './styles/index.scss';
 
 const Signin = lazy(() => import("./pages/auth/signin/signin"));
 const Signup = lazy(() => import("./pages/auth/signup/signup"));
