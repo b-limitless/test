@@ -3,7 +3,8 @@ import { UserService } from './users.service';
 import { Serialize } from 'src/users/interceptors/serialize.interceptors';
 import { UserDto } from 'src/users/dto/user.dto';
 import { AuthService } from './auth.service';
-import { CreateUserDto, SignInUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from './dto/create-user.dto';
+import { SignInUserDto } from './dto/signin-user-dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.schema';
 
