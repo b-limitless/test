@@ -3,7 +3,7 @@ import { UserService } from './users.service';
 import { Serialize } from 'src/users/interceptors/serialize.interceptors';
 import { UserDto } from 'src/users/dto/user.dto';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, SignInUserDto } from './dto/create-user.dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.schema';
 
@@ -26,7 +26,7 @@ export class UserController {
   }
 
   @Post('/signin')
-  async signin(@Body() body: CreateUserDto, @Session() session: any) {
+  async signin(@Body() body: SignInUserDto, @Session() session: any) {
     const user = await this.authService.signin(body.email, body.password);
     session.userId = user._id;
   }
