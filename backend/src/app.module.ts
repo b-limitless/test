@@ -6,6 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { APP_PIPE } from '@nestjs/core';
+import { LoggerModule } from './logger/logger.module';
 
 const cookieSession = require('cookie-session');
 
@@ -22,8 +23,9 @@ const cookieSession = require('cookie-session');
         uri: config.get<string>('MONGODB_URI'), // MongoDB connection string from .env
       }),
     }),
+    LoggerModule,
     UsersModule,
-    DashboardModule
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [

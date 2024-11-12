@@ -7,6 +7,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { SignInUserDto } from './dto/signin-user-dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.schema';
+import { LoggerService } from 'src/logger/logger.service';
 
 @Serialize(UserDto)
 @Controller('users')
@@ -14,6 +15,7 @@ export class UserController {
   constructor(
     private userService: UserService,
     private authService: AuthService,
+    private loggerService: LoggerService
   ) {}
 
   @Post('/signup')
@@ -42,10 +44,16 @@ export class UserController {
     return user;
   }
 
-
-
   @Get('/')
   async findAll() {
     return this.userService.getAllUsers();
+  }
+
+  @Get('/log') 
+  async testLogSerive() {
+    this.loggerService.info('Fetching users list...');
+    return {
+      message: 'Fetching users list ...'
+    }
   }
 }
