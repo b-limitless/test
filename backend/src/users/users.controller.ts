@@ -38,9 +38,10 @@ export class UserController {
 
   @Post('/currentUser')
   currentUser(@CurrentUser() user: User, @Session() session: any) {
-    // console.log('user', session?.userId)
     return user;
   }
+
+
 
   @Get('/')
   async findAll() {
