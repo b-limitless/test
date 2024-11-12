@@ -3,8 +3,8 @@ import React, { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 
-const Signin = lazy(() => import("./pages/auth/signin"));
-const Signup = lazy(() => import("./pages/auth/signup"));
+const Signin = lazy(() => import("./pages/auth/signin/signin"));
+const Signup = lazy(() => import("./pages/auth/signup/signup"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 
 function App() {
