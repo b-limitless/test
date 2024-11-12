@@ -1,7 +1,7 @@
 // src/App.tsx
 import React, { Suspense, lazy } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
+
 
 const Signin = lazy(() => import("./pages/auth/signin"));
 const Signup = lazy(() => import("./pages/auth/signup"));
