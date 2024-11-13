@@ -1,3 +1,4 @@
+import { APIs } from "utils/apis";
 import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { request } from "utils/request";
@@ -14,7 +15,7 @@ export default function useCurrentUser() {
   const fetchCurrentUser = useCallback(async () => {
     try {
       await request({
-        url: "http://localhost:3000/users/currentUser",
+        url: APIs.auth.currentUser,
         method: "post",
         navigations: navigateToSignIn, // This will redirect on unauthorized
       });
