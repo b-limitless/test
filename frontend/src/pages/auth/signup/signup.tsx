@@ -28,9 +28,10 @@ export default function Create() {
     }));
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async () => {
     try {
       // Submit the form to service
+      console.log('submitting the form')
     } catch (err) {
       console.log('Error while creating release', err);
     }
@@ -62,8 +63,8 @@ export default function Create() {
 
     // If there are no validation errors, proceed with submission
     if (Object.keys(validationErrors).length === 0) {
-      // handleSubmit();
-      // submit the form
+      handleSubmit();
+    
     }
   };
 
@@ -74,7 +75,7 @@ export default function Create() {
     // }
   }, []);
 
-  console.log('formData', formData)
+  
 
   return (
     <>

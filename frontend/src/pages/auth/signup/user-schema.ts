@@ -1,4 +1,4 @@
-import { validString } from "../../../utils/regrex";
+import { emailRegex, passwordRegex, validString } from "../../../utils/regrex";
 export const userSchema:any = [
   {
     field: "name",
@@ -13,7 +13,7 @@ export const userSchema:any = [
     label: "Email",
     type: "text",
     colSpan: 12,
-    regex: validString,
+    regex: emailRegex,
     errorMessage:
       "Please provide valid email address.",
   },
@@ -23,7 +23,7 @@ export const userSchema:any = [
     label: "Password",
     type: "text",
     colSpan: 12,
-    regex: validString,
+    regex: passwordRegex,
     errorMessage:
       "Invalid password.",
   },

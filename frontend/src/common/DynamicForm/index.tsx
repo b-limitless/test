@@ -1,10 +1,7 @@
 import { Save } from "@mui/icons-material";
-import { Box, Grid2, TextField, } from "@mui/material";
+import { Box, Grid2, TextField } from "@mui/material";
 import { Input } from "../../components/Input";
 import { LoadingButton } from "@mui/lab";
-
-
-
 
 interface FieldSchema {
   field: string;
@@ -33,8 +30,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
   saving,
 }) => {
   return (
-
-    <Grid2 container >
+    <Grid2 container>
       {formSchema.map((field, index) => {
         const error = errors[field.field];
 
@@ -43,7 +39,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
             key={index}
             component="div"
             size={{ xs: 12, md: field.colSpan }}
-
           >
             {field.type === "text" && (
               <Input
@@ -57,7 +52,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                 margin="normal"
                 error={!!error}
                 helperText={error}
-
               />
             )}
 
@@ -67,10 +61,9 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   onClick={handleSubmit}
                   loading={saving}
                   loadingPosition="start"
-                  startIcon={<Save />}
                   variant="contained"
                 >
-                  Save
+                  Signup
                 </LoadingButton>
               </Grid2>
             )}
@@ -78,7 +71,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
         );
       })}
     </Grid2>
-
   );
 };
 
