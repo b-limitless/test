@@ -7,8 +7,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { SignInUserDto } from './dto/signin-user-dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.schema';
-import { LoggerService } from 'src/logger/logger.service';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { LoggerService } from '../logger/logger.service';
+import { AuthGuard } from '../guard/auth.guard';
 
 @Serialize(UserDto)
 @Controller('users')
