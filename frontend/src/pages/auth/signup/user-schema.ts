@@ -25,7 +25,7 @@ export const userSchema:any = [
     colSpan: 12,
     regex: passwordRegex,
     errorMessage:
-      "Invalid password.",
+      "Password must be at least 8 characters and include a letter, a number, and a special character.",
   },
 
   {
