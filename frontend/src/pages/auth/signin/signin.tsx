@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DynamicForm from "common/DynamicForm";
 import ErrorText from "components/Help/ErrorText";
 import { request } from "utils/request";
@@ -108,6 +108,10 @@ export default function Signin() {
             errors={errors}
             saving={isPending}
           />
+
+          <div className="navigate_helper">
+            <span className="already">Create an account ? <Link to='/signup'>Signup</Link></span>
+          </div>
         </div>
 
         </div>
