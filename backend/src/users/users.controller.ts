@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Session } from '@nestjs/common';
+import { Controller, Get, Post, Body, Session, UseGuards } from '@nestjs/common';
 import { UserService } from './users.service';
 import { Serialize } from 'src/users/interceptors/serialize.interceptors';
 import { UserDto } from 'src/users/dto/user.dto';
@@ -8,6 +8,7 @@ import { SignInUserDto } from './dto/signin-user-dto';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.schema';
 import { LoggerService } from 'src/logger/logger.service';
+import { AuthGuard } from 'src/guard/auth.guard';
 
 @Serialize(UserDto)
 @Controller('users')
@@ -39,6 +40,7 @@ export class UserController {
     session.userId = null;
   }
 
+  @UseGuards(AuthGuard)
   @Post('/currentUser')
   currentUser(@CurrentUser() user: User, @Session() session: any) {
     return user;

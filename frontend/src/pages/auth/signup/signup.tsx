@@ -1,40 +1,70 @@
-import { Box, FormHelperText } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { userSchema } from './user-schema';
-import DynamicForm from '../../../common/DynamicForm';
-import './signup.scss';
+import { Box, FormHelperText } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userSchema } from "./user-schema";
+import DynamicForm from "../../../common/DynamicForm";
+import "./signup.scss";
+import { request } from "../../../utils/request";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import ErrorText from "../../../components/Help/ErrorText";
+
+const createUser = async (formData: any) => {
+  try {
+    // Submit the form to service
+    await request({
+      url: "http://localhost:3000/users/signup",
+      method: "post",
+      body: formData,
+    });
+  } catch (err) {
+    if (axios.isAxiosError(err) && err.response) {
+      throw err.response.data; // Pass the error response data to be accessible in useMutation
+    } else {
+      throw new Error("An unknown error occurred");
+    }
+  }
+};
+
 
 export default function Create() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<any>({
-    email: '',
-    name: '',
-    password: ''
+    email: "",
+    name: "",
+    password: "",
   });
   const [errors, setErrors] = useState<any>({
-    email: '',
-    name: '',
-    password: ''
+    email: "",
+    name: "",
+    password: "",
   });
 
+  const {
+    mutate: createUserMutation,
+    data,
+    isPending,
+    isError,
+    error,
+  } = useMutation({
+    mutationFn: createUser,
+    onSuccess: (data) => {
+      navigate("/dashboard");
+      // Perform any other success actions here
+    },
+  });
 
   const handleChange = (e: any) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev: any) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
-  const handleSubmit = async () => {
-    try {
-      // Submit the form to service
-      console.log('submitting the form')
-    } catch (err) {
-      console.log('Error while creating release', err);
-    }
+  const handleSubmit = () => {
+    createUserMutation(formData);
   };
 
   const validateForm = () => {
@@ -44,7 +74,7 @@ export default function Create() {
 
       // Check if regex exists and validate value with regex
       if (field.regex && !field.regex.test(value)) {
-        newErrors[field.field] = field.errorMessage || 'Invalid value';
+        newErrors[field.field] = field.errorMessage || "Invalid value";
       }
 
       // Check for required fields if specified
@@ -64,27 +94,28 @@ export default function Create() {
     // If there are no validation errors, proceed with submission
     if (Object.keys(validationErrors).length === 0) {
       handleSubmit();
-    
     }
   };
 
   useEffect(() => {
-    // When form is submitted then simply 
+    // When form is submitted then simply
     // if (createReleseData?.status) {
     //   navigate('/dashboard');
     // }
   }, []);
 
-  
+  console.log("error", error, isError);
 
   return (
     <>
       <div className="form_container">
-        {/* {error?.data?.message && (
-        <FormHelperText sx={{ color: 'red', p: 1 }}>
-          {error?.data?.message.toString()}
-        </FormHelperText>
-      )} */}
+      
+        <div>
+        {isError && (
+          <ErrorText 
+          style={{padding: '1rem 0 1rem 0', textAlign:'center'}}
+          text={error?.message || "Something went wrong"} />
+        )}
 
         <div className="form">
           <DynamicForm
@@ -94,15 +125,13 @@ export default function Create() {
             handleSubmit={onSubmit}
             validateForm={validateForm}
             errors={errors}
-            saving={false}
+            saving={isPending}
           />
         </div>
 
-
-
-
+        </div>
+       
       </div>
-
     </>
   );
 }

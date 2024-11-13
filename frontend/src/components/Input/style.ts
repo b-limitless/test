@@ -6,7 +6,7 @@ export const style: any = {
   },
   "&.MuiFormControl-root": {
     width: "100%", 
-    minHeight: '63.91px', 
+    
     fontFamily: "Poppins, sans-serif !important",
   },
   "& .MuiInputLabel-root": {

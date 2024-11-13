@@ -19,7 +19,7 @@ interface RequestParams {
   rest?:any;
 }
 
-export const request = async ({ url, method='get', body, unauthrizedRedirect = true, ...rest }: RequestParams) => {
+export const request = async ({ url, method, body, unauthrizedRedirect = true, ...rest }: RequestParams) => {
   axiosCommon();
   // Interceptor response
   let service = axios.create({withCredentials: true});
