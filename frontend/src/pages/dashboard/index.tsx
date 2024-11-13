@@ -1,11 +1,11 @@
-import useCurrentUser from "hooks/useCurrentUser";
-import "./dashboard.scss";
-import Button from "components/Button";
-import { request } from "utils/request";
-import { APIs } from "utils/apis";
-import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import Template from "common/Template/Template";
 import CustomLoadingButton from "components/Button/LoadingButton";
+import { useNavigate } from "react-router-dom";
+import { APIs } from "utils/apis";
+import { request } from "utils/request";
+import "./dashboard.scss";
+import ErrorText from "components/Help/ErrorText";
 
 const logOutUser = async () => {
   try {
@@ -43,11 +43,14 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="dashboard">
-      <div className="welcome">
-        <h1>Welcome to the application.</h1>
+    <Template message="Welcome to the application.">
+     {isError && (
+          <ErrorText 
+          style={{padding: '1rem 0 1rem 0', textAlign:'center'}}
+          text={error?.message || "Something went wrong"} />
+        )}
 
-        <CustomLoadingButton
+       <CustomLoadingButton
           onClick={logouthandler}
           loading={isPending}
           loadingPosition="start"
@@ -57,8 +60,6 @@ export default function Dashboard() {
           Logout
         </CustomLoadingButton>
 
-        {/* <Button variant="secondary" text="logout" onClick={logouthandler} /> */}
-      </div>
-    </div>
+    </Template>
   );
 }

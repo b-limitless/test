@@ -1,4 +1,3 @@
-import { Label } from "@mui/icons-material";
 import { emailRegex, passwordRegex, validString } from "utils/regrex";
 
 export const baseUserSchema: any = [
