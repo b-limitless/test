@@ -35,7 +35,7 @@ export default function Dashboard() {
     },
   });
 
-  useCurrentUser();
+  // useCurrentUser();
 
   const logouthandler = () => {
     // Run mutation
