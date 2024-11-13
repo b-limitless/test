@@ -14,13 +14,11 @@ export const styles = (variant: variantType) => {
       ? colors.light
       : variant === "secondary"
       ? colors.primary
-      : variant === "light"
-      ? colors.primary
-      : colors.primary;
+      : colors.secondary;
 
   const optionalProps = {} as any;
 
-  if (variant === "light" || variant === "primary") {
+  if (variant === "primary") {
     optionalProps.border = `1px solid ${colors.primary}`;
   }
 
