@@ -6,7 +6,7 @@ import DynamicForm from "common/DynamicForm";
 import ErrorText from "components/Help/ErrorText";
 import { request } from "utils/request";
 import "../auth.scss";
-import { baseUserSchema } from "../user-schema";
+import { signinSchema } from "../user-schema";
 import { APIs } from "utils/apis";
 
 const signInUser = async (formData: any) => {
@@ -59,7 +59,7 @@ export default function Signin() {
 
   const validateForm = () => {
     const newErrors: any = {};
-    baseUserSchema.forEach((field: any) => {
+    signinSchema.forEach((field: any) => {
       const value = formData[field.field];
 
       // Check if regex exists and validate value with regex
@@ -100,7 +100,7 @@ export default function Signin() {
 
         <div className="form">
           <DynamicForm
-            formSchema={baseUserSchema}
+            formSchema={signinSchema}
             setFormData={setFormData}
             formData={formData}
             handleSubmit={onSubmit}

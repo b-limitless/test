@@ -81,7 +81,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   variant="contained"
                   type="primary"
                 >
-                  Signup
+                  {field.label}
                 </CustomLoadingButton>
               </Grid2>
             )}

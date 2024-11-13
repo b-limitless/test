@@ -1,3 +1,4 @@
+import { Label } from "@mui/icons-material";
 import { emailRegex, passwordRegex, validString } from "utils/regrex";
 
 export const baseUserSchema: any = [
@@ -18,11 +19,6 @@ export const baseUserSchema: any = [
     errorMessage:
       "Password must be at least 8 characters and include a letter, a number, and a special character.",
   },
-  {
-    field: "submit",
-    type: "button",
-    colSpan: 12,
-  },
 ];
 export const userSchema: any = [
   {
@@ -35,4 +31,21 @@ export const userSchema: any = [
   },
 
   ...baseUserSchema,
+
+  {
+    label: "Signup",
+    field: "submit",
+    type: "button",
+    colSpan: 12,
+  },
+];
+
+export const signinSchema = [
+  ...baseUserSchema,
+  {
+    label: "Signin",
+    field: "submit",
+    type: "button",
+    colSpan: 12,
+  },
 ];
