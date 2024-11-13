@@ -1,28 +1,35 @@
-import { useCallback, useEffect } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { request } from "utils/request";
 
 export default function useCurrentUser() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const navigateTo = useCallback(() => {
+  const navigateToSignIn = useCallback(() => {
     navigate("/signin");
   }, [navigate]);
 
-  const currentUser = useCallback(async () => {
+  const fetchCurrentUser = useCallback(async () => {
     try {
-      // Submit the form to service
       await request({
         url: "http://localhost:3000/users/currentUser",
         method: "post",
-        navigations: navigateTo,
+        navigations: navigateToSignIn, // This will redirect on unauthorized
       });
+      setIsAuthenticated(true);
     } catch (err) {
-      console.log(`An unknown error occurred ${err}`);
+      console.log(`An unknown error occurred: ${err}`);
+      setIsAuthenticated(false);
+    } finally {
+      setIsLoading(false);
     }
-  }, [navigateTo]);
+  }, [navigateToSignIn]);
 
   useEffect(() => {
-    currentUser();
-  }, [currentUser]);
+    fetchCurrentUser();
+  }, [fetchCurrentUser]);
+
+  return { isAuthenticated, isLoading };
 }
