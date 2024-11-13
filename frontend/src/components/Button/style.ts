@@ -8,9 +8,7 @@ export const styles = (variant: variantType) => {
       ? colors.primary
       : variant === "secondary"
       ? colors.secondary
-      : variant === "light"
-      ? colors.light
-      : colors.primary;
+      : variant === "light";
   let color =
     variant === "primary"
       ? colors.light

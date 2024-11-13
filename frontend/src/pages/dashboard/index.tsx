@@ -5,6 +5,7 @@ import { request } from "utils/request";
 import { APIs } from "utils/apis";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import CustomLoadingButton from "components/Button/LoadingButton";
 
 const logOutUser = async () => {
   try {
@@ -33,13 +34,12 @@ export default function Dashboard() {
       navigate("/signin");
     },
   });
-  
 
   useCurrentUser();
 
   const logouthandler = () => {
     // Run mutation
-    logOutUserMutation()
+    logOutUserMutation();
   };
 
   return (
@@ -47,7 +47,17 @@ export default function Dashboard() {
       <div className="welcome">
         <h1>Welcome to the application.</h1>
 
-        <Button variant="secondary" text="logout" onClick={logouthandler} />
+        <CustomLoadingButton
+          onClick={logouthandler}
+          loading={isPending}
+          loadingPosition="start"
+          variant="contained"
+          type="secondary"
+        >
+          Logout
+        </CustomLoadingButton>
+
+        {/* <Button variant="secondary" text="logout" onClick={logouthandler} /> */}
       </div>
     </div>
   );
