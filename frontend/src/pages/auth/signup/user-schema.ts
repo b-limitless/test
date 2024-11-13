@@ -21,7 +21,7 @@ export const userSchema:any = [
   {
     field: "password",
     label: "Password",
-    type: "text",
+    type: "password",
     colSpan: 12,
     regex: passwordRegex,
     errorMessage:

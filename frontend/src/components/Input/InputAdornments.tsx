@@ -1,13 +1,8 @@
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { FormHelperText } from "@mui/material";
-import FormControl from "@mui/material/FormControl";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
-import OutlinedInput from "@mui/material/OutlinedInput";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { FormHelperText, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material";
 import * as React from "react";
 import { colors } from "config/colors";
+import { style } from "./style";
 
 interface InputAdornmentsProps {
   formControlProps?: any; // You can define a more specific type if you know the structure
@@ -35,12 +30,13 @@ export default function InputAdornments({
   };
 
   return (
-    <FormControl {...formControlProps} variant="outlined">
+    <FormControl {...formControlProps} variant="outlined" sx={style}>
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
         {...props}
-        id="outlined-adornment-password"
+        id="password-field"
         type={showPassword ? "text" : "password"}
+        size="medium"
         endAdornment={
           <InputAdornment position="end">
             <IconButton
@@ -55,7 +51,7 @@ export default function InputAdornments({
         }
       />
       {error && (
-        <FormHelperText sx={{ color: `${colors.red}` }}>
+        <FormHelperText sx={{ color: colors.red }}>
           {helperText}
         </FormHelperText>
       )}

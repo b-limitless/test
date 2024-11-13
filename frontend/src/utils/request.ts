@@ -31,8 +31,6 @@ export const request = async ({
   let service = axios.create({ withCredentials: true });
   service.interceptors.response.use(handleSuccess, handleError);
 
-  console.log('navigations', navigations)
-
   try {
     const response = await service[method](url, body as object);
     return response.data;

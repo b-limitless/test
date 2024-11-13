@@ -1,12 +1,12 @@
 import CustomLoadingButton from "components/Button/LoadingButton";
 import { LoadingButton } from "@mui/lab";
 import { Grid2 } from "@mui/material";
-import { Input } from "components/Input";
+import { Input, InputAdornments } from "components/Input";
 
 interface FieldSchema {
   field: string;
   label: string;
-  type: "text" | "textarea" | "button";
+  type: "text" | "textarea" | "button" | "password";
   colSpan: number;
 }
 
@@ -53,6 +53,24 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                 helperText={error}
               />
             )}
+
+{field.type === "password" && (
+              <InputAdornments
+                label={field.label}
+                name={field.field}
+                value={formData[field.field] || ""}
+                onChange={(e: any) =>
+                  setFormData({ ...formData, [field.field]: e.target.value })
+                }
+                fullWidth
+                margin="normal"
+                error={!!error}
+                helperText={error}
+              />
+            )}
+
+
+
 
             {field.type === "button" && (
               <Grid2 container justifyContent="flex-end" component="div" mt={'2rem'}>

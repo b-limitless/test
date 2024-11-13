@@ -9,6 +9,6 @@ export const colors = {
 }
 
 export const fonts =  {
-    secondaryFontFamily: "'Figtree', sans-serif"
+    secondaryFontFamily: "Poppins, sans-serif"
 }
 

@@ -29,9 +29,8 @@ export const styles = (variant: variantType) => {
   return {
     background: background,
     borderRadius: "0px",
-    padding: "12px 0",
+    padding: "12px 22px",
     color: color,
-    width: "100%",
     opacity: 0.9,
     fontFamily: "Figtree, sans-serif",
     fontSize: "16px",
