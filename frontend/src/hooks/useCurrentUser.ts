@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import { request } from "../utils/request";
-import axios from "axios";
+import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { request } from "utils/request";
 
 export default function useCurrentUser() {
   const navigate = useNavigate();
 
-  const navigateTo = () => {
+  const navigateTo = useCallback(() => {
     navigate("/signin");
-  };
-  const currentUser = async () => {
+  }, [navigate]);
+
+  const currentUser = useCallback(async () => {
     try {
       // Submit the form to service
       await request({
@@ -20,9 +20,9 @@ export default function useCurrentUser() {
     } catch (err) {
       console.log(`An unknown error occurred ${err}`);
     }
-  };
+  }, [navigateTo]);
 
   useEffect(() => {
     currentUser();
-  }, []);
+  }, [currentUser]);
 }

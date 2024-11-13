@@ -1,4 +1,4 @@
-import { emailRegex, passwordRegex, validString } from "../../../utils/regrex";
+import { emailRegex, passwordRegex, validString } from "utils/regrex";
 export const userSchema:any = [
   {
     field: "name",

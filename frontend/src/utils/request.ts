@@ -1,6 +1,5 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import axiosCommon from "./axiosCommon";
-import { AxiosResponse, AxiosRequestConfig } from "axios";
 
 const handleSuccess = (response: AxiosResponse) => {
   return response;

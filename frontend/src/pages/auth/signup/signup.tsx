@@ -1,13 +1,12 @@
-import { Box, FormHelperText } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { userSchema } from "./user-schema";
-import DynamicForm from "../../../common/DynamicForm";
-import "./signup.scss";
-import { request } from "../../../utils/request";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import ErrorText from "../../../components/Help/ErrorText";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DynamicForm from "common/DynamicForm";
+import ErrorText from "components/Help/ErrorText";
+import { request } from "utils/request";
+import "./signup.scss";
+import { userSchema } from "./user-schema";
 
 const createUser = async (formData: any) => {
   try {
@@ -43,25 +42,16 @@ export default function Create() {
 
   const {
     mutate: createUserMutation,
-    data,
     isPending,
     isError,
     error,
   } = useMutation({
     mutationFn: createUser,
-    onSuccess: (data) => {
+    onSuccess: () => {
       navigate("/dashboard");
       // Perform any other success actions here
     },
   });
-
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev: any) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
 
   const handleSubmit = () => {
     createUserMutation(formData);
@@ -96,15 +86,6 @@ export default function Create() {
       handleSubmit();
     }
   };
-
-  useEffect(() => {
-    // When form is submitted then simply
-    // if (createReleseData?.status) {
-    //   navigate('/dashboard');
-    // }
-  }, []);
-
-  console.log("error", error, isError);
 
   return (
     <>

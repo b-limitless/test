@@ -1,6 +1,6 @@
 import React from "react";
 import { Button as MButton } from "@mui/material";
-import { colors } from "../../config/colors";
+import { colors } from "config/colors";
 
 export type variantType = "primary" | "secondary" | "light";
 

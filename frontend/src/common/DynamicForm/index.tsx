@@ -1,7 +1,6 @@
-import { Save } from "@mui/icons-material";
-import { Box, Grid2, TextField } from "@mui/material";
-import { Input } from "../../components/Input";
 import { LoadingButton } from "@mui/lab";
+import { Grid2 } from "@mui/material";
+import { Input } from "components/Input";
 
 interface FieldSchema {
   field: string;
@@ -25,7 +24,6 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
   setFormData,
   formSchema,
   handleSubmit,
-  validateForm,
   errors,
   saving,
 }) => {

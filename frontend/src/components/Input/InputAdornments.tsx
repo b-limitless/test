@@ -1,14 +1,13 @@
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { FormHelperText } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import * as React from "react";
-import { style } from "./style";
-import { FormHelperText } from "@mui/material";
-import { colors } from "../../config/colors";
+import { colors } from "config/colors";
 
 interface InputAdornmentsProps {
   formControlProps?: any; // You can define a more specific type if you know the structure
