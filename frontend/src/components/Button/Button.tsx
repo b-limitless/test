@@ -1,6 +1,5 @@
-import React from "react";
 import { Button as MButton } from "@mui/material";
-import { colors } from "config/colors";
+import React from "react";
 import { styles, variantType } from "./style";
 
 

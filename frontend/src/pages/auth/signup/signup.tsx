@@ -8,6 +8,7 @@ import { request } from "utils/request";
 import "../auth.scss";
 import { userSchema } from "../user-schema";
 import { APIs } from "utils/apis";
+import { validateFormGlobal } from "functions/validateForm";
 
 const createUser = async (formData: any) => {
   try {
@@ -59,21 +60,8 @@ export default function Create() {
   };
 
   const validateForm = () => {
-    const newErrors: any = {};
-    userSchema.forEach((field: any) => {
-      const value = formData[field.field];
-
-      // Check if regex exists and validate value with regex
-      if (field.regex && !field.regex.test(value)) {
-        newErrors[field.field] = field.errorMessage || "Invalid value";
-      }
-
-      // Check for required fields if specified
-      if (field.required && !value) {
-        newErrors[field.field] = `${field.label} is required`;
-      }
-    });
-
+    const newErrors: any = validateFormGlobal(userSchema, formData);
+   
     return newErrors as any;
   };
 

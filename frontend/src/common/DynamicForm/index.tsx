@@ -1,6 +1,5 @@
-import CustomLoadingButton from "components/Button/LoadingButton";
-import { LoadingButton } from "@mui/lab";
 import { Grid2 } from "@mui/material";
+import CustomLoadingButton from "components/Button/LoadingButton";
 import { Input, InputAdornments } from "components/Input";
 
 interface FieldSchema {
@@ -54,7 +53,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
               />
             )}
 
-{field.type === "password" && (
+            {field.type === "password" && (
               <InputAdornments
                 label={field.label}
                 name={field.field}

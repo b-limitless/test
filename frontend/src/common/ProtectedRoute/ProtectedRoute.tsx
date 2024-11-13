@@ -5,7 +5,7 @@ export default function ProtectedRoute() {
   const { isAuthenticated, isLoading } = useCurrentUser();
 
   if (isLoading) {
-    return <div>Loading...</div>; // Optional: a spinner or loading screen
+    return <div>Loading...</div>;
   }
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/signin" />;

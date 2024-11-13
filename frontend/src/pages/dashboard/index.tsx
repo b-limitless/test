@@ -4,7 +4,6 @@ import CustomLoadingButton from "components/Button/LoadingButton";
 import { useNavigate } from "react-router-dom";
 import { APIs } from "utils/apis";
 import { request } from "utils/request";
-import "./dashboard.scss";
 import ErrorText from "components/Help/ErrorText";
 
 const logOutUser = async () => {
