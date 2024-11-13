@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import DynamicForm from "common/DynamicForm";
 import ErrorText from "components/Help/ErrorText";
 import { request } from "utils/request";
-import "./signup.scss";
-import { userSchema } from "./user-schema";
+import "../auth.scss";
+import { userSchema } from "../user-schema";
 import { APIs } from "utils/apis";
 
 const createUser = async (formData: any) => {

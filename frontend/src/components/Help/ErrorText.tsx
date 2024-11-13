@@ -7,7 +7,7 @@ interface IFormHelperText {
 }
 
 const myStyles: any = {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins, san-sarif",
     fontWeight: 400,
     fontSize: "1rem",
     lineHeight: 1.66,

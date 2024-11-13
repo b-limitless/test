@@ -5,5 +5,6 @@ export const APIs  = {
         signup: `${BASE_URI}/users/signup`, 
         currentUser: `${BASE_URI}/users/currentUser`, 
         signout: `${BASE_URI}/users/signout`, 
+        signin: `${BASE_URI}/users/signin`, 
     }
 }
