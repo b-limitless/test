@@ -1,3 +1,4 @@
+import CustomLoadingButton from "components/Button/LoadingButton";
 import { LoadingButton } from "@mui/lab";
 import { Grid2 } from "@mui/material";
 import { Input } from "components/Input";
@@ -54,15 +55,16 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
             )}
 
             {field.type === "button" && (
-              <Grid2 container justifyContent="flex-end" component="div">
-                <LoadingButton
+              <Grid2 container justifyContent="flex-end" component="div" mt={'2rem'}>
+                <CustomLoadingButton
                   onClick={handleSubmit}
                   loading={saving}
                   loadingPosition="start"
                   variant="contained"
+                  type="primary"
                 >
                   Signup
-                </LoadingButton>
+                </CustomLoadingButton>
               </Grid2>
             )}
           </Grid2>
