@@ -7,12 +7,13 @@ import ErrorText from "components/Help/ErrorText";
 import { request } from "utils/request";
 import "./signup.scss";
 import { userSchema } from "./user-schema";
+import { APIs } from "utils/apis";
 
 const createUser = async (formData: any) => {
   try {
     // Submit the form to service
     await request({
-      url: "http://localhost:3000/users/signup",
+      url: APIs.auth.signup,
       method: "post",
       body: formData,
     });
