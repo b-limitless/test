@@ -7,5 +7,5 @@ interface InputInterfae {
 }
 
 export default function Input({ ...rest }: InputInterfae) {
-  return <TextField sx={style} size="medium" {...rest}></TextField>;
+  return <TextField sx={style} size="medium" {...rest} ></TextField>;
 }
