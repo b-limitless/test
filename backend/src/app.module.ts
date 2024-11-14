@@ -67,10 +67,15 @@ export class AppModule implements OnModuleInit {
 
   configure(consumer: MiddlewareConsumer) {
     const appSecretKey = this.configService.get<string>('APP_SECRET_KEY');
+    const isProduction = this.configService.get<string>('NODE_ENV') === 'production';
     consumer
       .apply(
         cookieSession({
           keys: [appSecretKey],
+          maxAge: 24 * 60 * 60 * 1000, 
+          secure: isProduction,
+          httpOnly: true, 
+          sameSite: 'strict', 
         }),
       )
       .forRoutes('*');
