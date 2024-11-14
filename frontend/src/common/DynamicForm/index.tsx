@@ -47,7 +47,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   setFormData({ ...formData, [field.field]: e.target.value })
                 }
                 fullWidth
-                margin="normal"
+                margin="none"
                 error={!!error}
                 helperText={error}
               />
@@ -62,7 +62,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   setFormData({ ...formData, [field.field]: e.target.value })
                 }
                 fullWidth
-                margin="normal"
+                margin="none"
                 error={!!error}
                 helperText={error}
               />
@@ -76,7 +76,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                 <CustomLoadingButton
                   onClick={handleSubmit}
                   loading={saving}
-                  loadingPosition="start"
+                  // loadingPosition="start"
                   variant="contained"
                   type="primary"
                 >
