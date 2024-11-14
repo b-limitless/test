@@ -32,7 +32,7 @@ export const request = async ({
   service.interceptors.response.use(handleSuccess, handleError);
 
   try {
-    const response = await service[method](url, body as object);
+    const response = await service[method](url, body as object, { withCredentials: true });
     return response.data;
   } catch (err: any) {
     if (

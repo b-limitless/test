@@ -1,6 +1,6 @@
 # Project Name
 
-A brief description of your application and its purpose.
+A brief description of application and its purpose.
 
 ## Table of Contents
 
