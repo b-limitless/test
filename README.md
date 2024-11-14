@@ -31,7 +31,7 @@ A brief description of application and its purpose.
 - **Backend**: [NestJS](https://nestjs.com/), MongoDB
 - **Frontend**: [React](https://reactjs.org/), [Yarn](https://yarnpkg.com/)
 - **Database**: MongoDB via [mLab](https://mlab.com/) (for testing and development)
-- **Other**: [dotenv](https://www.npmjs.com/package/dotenv) for environment configuration, [Logger Service] for logging
+- **Other**: [dotenv](https://www.npmjs.com/package/dotenv) for environment configuration, winston for logging
 
 ---
 

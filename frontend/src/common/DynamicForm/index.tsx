@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Box, Grid2 } from "@mui/material";
 import CustomLoadingButton from "components/Button/LoadingButton";
 import { Input, InputAdornments } from "components/Input";
 
@@ -68,11 +68,13 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
               />
             )}
 
-
-
-
             {field.type === "button" && (
-              <Grid2 container justifyContent="flex-end" component="div" mt={'2rem'}>
+              <Grid2
+                container
+                justifyContent="flex-end"
+                component="div"
+                mt={"2rem"}
+              >
                 <CustomLoadingButton
                   onClick={handleSubmit}
                   loading={saving}
