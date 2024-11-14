@@ -24,7 +24,7 @@ export const styles = (variant: variantType) => {
 
   return {
     background: background,
-    borderRadius: "0px",
+    borderRadius: "6px",
     padding: "12px 22px",
     color: color,
     opacity: 0.9,
