@@ -47,7 +47,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   setFormData({ ...formData, [field.field]: e.target.value })
                 }
                 fullWidth
-                margin="normal"
+                margin="dense"
                 error={!!error}
                 helperText={error}
               />
@@ -62,7 +62,7 @@ const DynamicForm: React.FC<DynamicFormProps> = ({
                   setFormData({ ...formData, [field.field]: e.target.value })
                 }
                 fullWidth
-                margin="normal"
+                margin="dense"
                 error={!!error}
                 helperText={error}
               />

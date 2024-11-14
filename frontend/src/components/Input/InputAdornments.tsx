@@ -30,7 +30,7 @@ export default function InputAdornments({
   };
 
   return (
-    <FormControl {...formControlProps} variant="outlined" sx={{...style, marginTop: '16px'}}>
+    <FormControl {...formControlProps} variant="outlined" sx={{...style, marginTop: '8px'}}>
       <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
       <OutlinedInput
         {...props}
